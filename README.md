@@ -1,7 +1,7 @@
-# ModernJSCourse
-Udemy Course Projects By TraversyMedia
+# ModernJSCourse - Brad Traversy
+All Course Projects
 
-## Included Projects
+### Included
 - Task List
 - Loan Calculator
 - Number Guesser Game
