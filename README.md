@@ -1,5 +1,5 @@
 # ModernJSCourse - Brad Traversy
-All Course Projects
+All Course Projects (Javascript, HTML)
 
 ### Included
 - Task List
