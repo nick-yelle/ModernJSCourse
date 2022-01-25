@@ -1,56 +1,43 @@
-document.getElementById('button1').addEventListener('click', loadCustomer);
-document.getElementById('button2').addEventListener('click', loadCustomers);
+const posts = [
+  {title: 'Post One', body: 'This is post one'},
+  {title: 'Post Two', body: 'This is post two'}
+];
 
-function loadCustomer(e) {
-  const xhr = new XMLHttpRequest();
+// function createPost(post) {
+//   setTimeout(function() {
+//     posts.push(post);
+//   }, 2000);
+// }
 
-  xhr.open('GET', 'customer.json', true);
+// function getPosts() {
+//   setTimeout(function() {
+//     let output = '';
+//     posts.forEach(post => {
+//       output += `<li>${post.title}</li>`;
+//     });
+//     document.body.innerHTML = output;
+//   }, 1000);
+// }
 
-  xhr.onload = function() {
-    if (this.status === 200) {
-      // Get response text
-      const customer = JSON.parse(this.responseText);
+// createPost({title: 'Post Three', body: 'This is post three'});
 
-      document.getElementById('customer').innerHTML = 
-      `<ul>
-        <li>Id: ${customer.id}</li>
-        <li>Name: ${customer.name}</li>
-        <li>Company: ${customer.company}</li>
-        <li>Phone: ${customer.phone}</li>
-      `
-    }
-  }
+// getPosts();
 
-  xhr.send();
+function createPost(post, callback) {
+  setTimeout(function() {
+    posts.push(post);
+    callback();
+  }, 2000);
 }
 
-function loadCustomers(e) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.open('GET', 'customers.json', true);
-
-  xhr.onload = function() {
-    if (this.status === 200) {
-      // Get response text
-      const customers = JSON.parse(this.responseText);
-
-      let output = '';
-
-      customers.forEach(customer => {
-        output += 
-        `<ul>
-          <li>Id: ${customer.id}</li>
-          <li>Name: ${customer.name}</li>
-          <li>Company: ${customer.company}</li>
-          <li>Phone: ${customer.phone}</li>
-        </ul>
-        `;
-      });
-
-      document.getElementById('customers').innerHTML = output;
-
-    }
-  }
-
-  xhr.send();
+function getPosts() {
+  setTimeout(function() {
+    let output = '';
+    posts.forEach(post => {
+      output += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = output;
+  }, 1000);
 }
+
+createPost({title: 'Post Three', body: 'This is post three'}, getPosts);
