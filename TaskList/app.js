@@ -4,6 +4,8 @@ const taskList = document.querySelector('.collection');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
+const myModal = document.getElementById('confirmModal')
+const myInput = document.getElementById('myInput')
 
 // Load all event listeners
 loadEventListeners();
@@ -69,7 +71,7 @@ function addTask(e) {
   // Add class
   link.className = 'delete-item secondary-content';
   // Add icon html
-  link.innerHTML = '<i class="fas fa-times"></i>';
+  link.innerHTML = '<i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#confirmModal"></i>';
   // Append the link to li
   li.appendChild(link);
   
@@ -102,6 +104,7 @@ function storeTaskInLocalStorage(task) {
 // Remove task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')) {
+    console.log("clicked");
     if(confirm('Are you sure?')) {
       e.target.parentElement.parentElement.remove(); 
 
