@@ -5,3 +5,5 @@ Udemy Course Projects By TraversyMedia
 - Task List
 - Loan Calculator
 - Number Guesser Game
+- Book List
+- Chuck Norris Joke Generator
