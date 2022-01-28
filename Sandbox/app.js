@@ -1,43 +1,31 @@
-const posts = [
-  {title: 'Post One', body: 'This is post one'},
-  {title: 'Post Two', body: 'This is post two'}
-];
+async function myFunc() {
 
-// function createPost(post) {
-//   setTimeout(function() {
-//     posts.push(post);
-//   }, 2000);
-// }
+  const promise = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('Hello'), 1000);
+  });
 
-// function getPosts() {
-//   setTimeout(function() {
-//     let output = '';
-//     posts.forEach(post => {
-//       output += `<li>${post.title}</li>`;
-//     });
-//     document.body.innerHTML = output;
-//   }, 1000);
-// }
+  const error = true;
 
-// createPost({title: 'Post Three', body: 'This is post three'});
+  if(!error) {
+    const res = await promise;
+    return res;
+  } else {
+    await Promise.reject(new Error('Something went wrong'));
+  }
 
-// getPosts();
-
-function createPost(post, callback) {
-  setTimeout(function() {
-    posts.push(post);
-    callback();
-  }, 2000);
+  const res = await promise; // Wait until promise is resolved
+  return res;
 }
 
-function getPosts() {
-  setTimeout(function() {
-    let output = '';
-    posts.forEach(post => {
-      output += `<li>${post.title}</li>`;
-    });
-    document.body.innerHTML = output;
-  }, 1000);
+async function getUsers() {
+  // await response of the fetch call
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+  // Only proceed once it is resolved
+  const data = await response.json();
+
+  // Only proceed once second promise is resolved
+  return data;
 }
 
-createPost({title: 'Post Three', body: 'This is post three'}, getPosts);
+getUsers().then(users => console.log(users));
