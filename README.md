@@ -7,3 +7,6 @@ All Course Projects (Javascript, HTML)
 - Number Guesser Game
 - Book List
 - Chuck Norris Joke Generator
+- Weather Application
+- Custom HTTP Library V1, V2, V3
+- GitHub Profile Search Tool
