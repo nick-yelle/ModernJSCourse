@@ -4,7 +4,7 @@ All Course Projects (Javascript, HTML)
 ### Included
 - Task List
 - Loan Calculator
-- Number Guesser Game
+- Number Guessing Game
 - Book List
 - Chuck Norris Joke Generator
 - Weather Application
