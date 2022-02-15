@@ -1,31 +1,50 @@
-async function myFunc() {
+// // Iterator Example
+// function nameIterator(names) {
+//   let nextIndex = 0;
 
-  const promise = new Promise((resolve,reject) => {
-    setTimeout(() => resolve('Hello'), 1000);
-  });
+//   return {
+//     next: function() {
+//       return nextIndex < names.length ? { value: names[nextIndex++], done: false} : {done: true}
+//     }
+//   }
+// }
 
-  const error = true;
+// // Create an array of names
+// const namesArr = ['Jack', 'Jill', 'John'];
 
-  if(!error) {
-    const res = await promise;
-    return res;
-  } else {
-    await Promise.reject(new Error('Something went wrong'));
+// // Init iterator and pass in the names array
+// const name = nameIterator(namesArr);
+
+// console.log(name.next().value);
+// console.log(name.next().value);
+// console.log(name.next());
+// console.log(name.next());
+
+// Generator example
+// function* sayNames() {
+//   yield 'Jack';
+//   yield 'Jill';
+//   yield 'John';
+// }
+
+// const name = sayNames();
+
+// console.log(name.next().value);
+// console.log(name.next().value);
+// console.log(name.next().value);
+// console.log(name.next().value);
+
+function* createIds() {
+  let index = 1;
+
+  while(true) {
+    yield index++;
   }
-
-  const res = await promise; // Wait until promise is resolved
-  return res;
 }
 
-async function getUsers() {
-  // await response of the fetch call
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+const gen = createIds();
 
-  // Only proceed once it is resolved
-  const data = await response.json();
-
-  // Only proceed once second promise is resolved
-  return data;
-}
-
-getUsers().then(users => console.log(users));
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
